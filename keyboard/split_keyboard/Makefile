@@ -57,7 +57,7 @@ SRC =	matrix.c \
 CONFIG_H = config.h
 
 # MCU name
-MCU = atmega32u4
+MCU = MKL26Z64VFT4
 
 COM_PORT=/dev/ttyACM0
 PROGRAM_CMD=sleep 3; avrdude -p atmega32u4 -P $(COM_PORT) -c avr109 -U flash:w:$(TARGET).hex
@@ -122,7 +122,7 @@ EXTRAKEY_ENABLE = yes	# Audio control and System control(+450)
 CONSOLE_ENABLE = yes	# Console for debug(+400)
 COMMAND_ENABLE = yes    # Commands for debug and configuration
 SLEEP_LED_ENABLE = yes  # Breathing sleep LED during USB suspend
-NKRO_ENABLE = yes	# USB Nkey Rollover
+#NKRO_ENABLE = yes	# USB Nkey Rollover
 ACTIONMAP_ENABLE = yes	# Use 16bit action codes in keymap instead of 8bit keycodes
 
 

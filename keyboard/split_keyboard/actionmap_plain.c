@@ -33,54 +33,28 @@ const uint16_t PROGMEM actionmaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* qwerty */
     [0] = ACTIONMAP(
         /* left hand */
-            TAB     , Q   , W    , E   , R   , T ,
-            SFT_ENT , A   , S    , D   , F   , G ,
-            LALT    , Z   , X    , C   , V   , B ,
-            NO      , FN3 , LCTL , SPC , FN2 ,
+            Q   , W    , E   , R   , T ,
+            A   , S    , D   , F   , G ,
+            Z   , X    , C   , V   , B ,
+            FN3 , LCTL , SPC , FN2 ,
         /* right hand */
-            Y    , U    , I    , O    , P    , MINS ,
-            H    , J    , K    , L    , SCLN , QUOT ,
-            N    , M    , COMM , DOT  , SLSH , FN0  ,
-            BSPC , SSFT , FN1  , LGUI , NO
+            Y    , U    , I    , O    , P    ,
+            H    , J    , K    , L    , SCLN ,
+            N    , M    , COMM , DOT  , SLSH ,
+            BSPC , SSFT , FN1  , LGUI 
     ),
-    /* dvorak */
-    [1] = ACTIONMAP(
-        /* left hand */
-            TRNS , QUOT , COMM , DOT  , P    , Y ,
-            TRNS , A    , O    , E    , U    , I ,
-            TRNS , SCLN , Q    , J    , K    , X ,
-            TRNS , TRNS , TRNS , TRNS , TRNS ,
-        /* right hand */
-            F    , G    , C    , R    , L    , SLSH ,
-            D    , H    , T    , N    , S    , MINS ,
-            B    , M    , W    , V    , Z    , TRNS  ,
-            TRNS , TRNS , TRNS , TRNS , TRNS
-    ),
-    /* colemak */
-    [2] = ACTIONMAP(
-        /* left hand */
-            TRNS , Q    , W    , F    , P    , G ,
-            TRNS , A    , R    , S    , T    , D ,
-            TRNS , Z    , X    , C    , V    , B ,
-            TRNS , TRNS , TRNS , TRNS , TRNS ,
-        /* right hand */
-            J    , L    , U    , Y    , SCLN , MINS ,
-            H    , N    , E    , I    , O    , QUOT ,
-            K    , M    , COMM , DOT  , SLSH , TRNS ,
-            TRNS , TRNS , TRNS , TRNS , TRNS
-   ),
-   /* symbol */
-   [3] = ACTIONMAP(
+    /* Fn */
+   [1] = ACTIONMAP(
        /* left hand */
-            TRNS , GRV  , 2    , 3    , 4    , 5       ,
-            TRNS , 1    , BSLS , s(9) , LBRC , s(LBRC) ,
-            TRNS , s(1) , s(2) , s(3) , s(4) , s(5)    ,
-            TRNS , TRNS , TRNS , TRNS , TRNS ,
+            GRV  , 2    , 3    , 4    , 5       ,
+            1    , BSLS , s(9) , LBRC , s(LBRC) ,
+            s(1) , s(2) , s(3) , s(4) , s(5)    ,
+            TRNS , TRNS , TRNS , TRNS ,
         /* right hand */
-            6       , 7    , 8    , 9      , s(EQL)  , MINS   ,
-            s(RBRC) , RBRC , s(0) , EQL    , 0       , s(GRV) ,
-            s(6)    , s(7) , s(8) , DOT    , s(BSLS) , FN0    ,
-            TRNS    , TRNS , TRNS , TRNS   , TRNS
+            7    , 8    , 9      , s(EQL)  , MINS   ,
+            RBRC , s(0) , EQL    , 0       , s(GRV) ,
+            s(7) , s(8) , DOT    , s(BSLS) , FN0    ,
+            TRNS , TRNS , TRNS   , TRNS
     ),
     /* fn */
     [4] = ACTIONMAP(

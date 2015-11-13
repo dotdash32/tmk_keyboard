@@ -43,16 +43,16 @@ const uint16_t PROGMEM actionmaps[][MATRIX_ROWS][MATRIX_COLS] = {
             N    , M    , COMM , DOT  , SLSH ,
             BSPC , SSFT , FN1  , LGUI 
     ),
-    /* Fn */
-   [1] = ACTIONMAP(
+    /* Lower for Numbers */
+   [3] = ACTIONMAP(
        /* left hand */
-            GRV  , 2    , 3    , 4    , 5       ,
-            1    , BSLS , s(9) , LBRC , s(LBRC) ,
+            F1   , F2   , F3   , F4   , F5      ,
+            1    , 2    , 3    , 4    , 5       ,
             s(1) , s(2) , s(3) , s(4) , s(5)    ,
             TRNS , TRNS , TRNS , TRNS ,
         /* right hand */
-            7    , 8    , 9      , s(EQL)  , MINS   ,
-            RBRC , s(0) , EQL    , 0       , s(GRV) ,
+            F6   , F7   , F8     , F9      , F10    ,
+            6    , 7    , 8      , 9       , 0      ,
             s(7) , s(8) , DOT    , s(BSLS) , FN0    ,
             TRNS , TRNS , TRNS   , TRNS
     ),

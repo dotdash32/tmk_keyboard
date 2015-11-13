@@ -36,28 +36,28 @@ const uint16_t PROGMEM actionmaps[][MATRIX_ROWS][MATRIX_COLS] = {
             Q   , W    , E   , R   , T ,
             A   , S    , D   , F   , G ,
             Z   , X    , C   , V   , B ,
-            FN3 , LCTL , SPC , FN2 ,
+            LCTL, LSFT , BSPC, LALT ,
         /* right hand */
             Y    , U    , I    , O    , P    ,
             H    , J    , K    , L    , SCLN ,
             N    , M    , COMM , DOT  , SLSH ,
-            BSPC , SSFT , FN1  , LGUI 
+            FN3  , FN2  , SPC  , FN0 
     ),
-    /* Lower for Numbers */
-   [3] = ACTIONMAP(
-       /* left hand */
-            F1   , F2   , F3   , F4   , F5      ,
-            1    , 2    , 3    , 4    , 5       ,
-            s(1) , s(2) , s(3) , s(4) , s(5)    ,
+    /* FN for fn */
+    [1] = ACTIONMAP(
+        /* left hand */
+            TRNS , TRNS , TRNS , TRNS , TRNS   ,
+            TRNS , TRNS , TNRS , TRNS , TRNS   ,
+            TRNS , TRNS , TRNS , TRNS , TRNS   ,
             TRNS , TRNS , TRNS , TRNS ,
         /* right hand */
-            F6   , F7   , F8     , F9      , F10    ,
-            6    , 7    , 8      , 9       , 0      ,
-            s(7) , s(8) , DOT    , s(BSLS) , FN0    ,
-            TRNS , TRNS , TRNS   , TRNS
+            HOME , PGUP   , UP     , PGDN    , BSPC   ,
+            END  , LEFT   , DOWN   , RGHT    , ENT    ,
+            NO   , VOLU , VOLD   , MUTE    , NUM   ,
+            TRNS , TRNS   , TRNS   , TRNS    
     ),
-    /* fn */
-    [4] = ACTIONMAP(
+    /* Raise for Symbols */
+    [2] = ACTIONMAP(
         /* left hand */
             INS  , DEL  , HOME , UP   , END  , PGUP ,
             TRNS , ESC  , LEFT , DOWN , RGHT , PGDN ,
@@ -69,19 +69,20 @@ const uint16_t PROGMEM actionmaps[][MATRIX_ROWS][MATRIX_COLS] = {
             F6      , F7      , F8      , F9      , F10     , FN0 ,
             TRNS    , TRNS    , TRNS    , TRNS    , TRNS
         ),
-    /* media */
-    [5] = ACTIONMAP(
-        /* left hand */
-            NO   , PSCR , MPLY , VOLU , MSTP   , F11     ,
-            BSPC , MUTE , MPRV , VOLD , MNXT   , APP     ,
-            LGUI , c(Y) , c(B) , c(I) , c(DOT) , c(SCLN) ,
-            TRNS , TRNS , TRNS , TRNS , TRNS   ,
+    /* Lower for Numbers */
+   [3] = ACTIONMAP(
+       /* left hand */
+            F1   , F2   , F3   , F4   , F5      ,
+            1    , 2    , 3    , 4    , 5       ,
+            F11  , F12  , PSCR , SLCK , PAUS    ,
+            TRNS , TRNS , TRNS , TRNS ,
         /* right hand */
-            WH_U , BTN1   , MS_U   , BTN2    , NO   , PROMICRO_PROGRAM  ,
-            WH_D , MS_L   , MS_D   , MS_R    , NO   , PROMICRO_RESET  ,
-            NO   , QWERTY , DVORAK , COLEMAK , NO   , FN0 ,
-            TRNS , TRNS   , TRNS   , TRNS    , TRNS
+            F6   , F7   , F8     , F9      , F10    ,
+            6    , 7    , 8      , 9       , 0      ,
+            TRNS  , TRNS  , TRNS   , MINS    , EQL    ,
+            TRNS , TRNS , TRNS   , TRNS
     ),
+    
 };
 
 void promicro_bootloader_jmp(bool program) {

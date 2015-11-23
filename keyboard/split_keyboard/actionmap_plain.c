@@ -46,8 +46,8 @@ const uint16_t PROGMEM actionmaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* FN for fn */
     [1] = ACTIONMAP(
         /* left hand */
-            TRNS , TRNS , TRNS , TRNS , TRNS   ,
-            TRNS , TRNS , TNRS , TRNS , TRNS   ,
+            TRNS , TRNS , TRNS , DEL  , INS    ,
+            TRNS , TRNS , TNRS , BSPC , TRNS   ,
             TRNS , TRNS , TRNS , TRNS , TRNS   ,
             TRNS , TRNS , TRNS , TRNS ,
         /* right hand */
@@ -79,7 +79,7 @@ const uint16_t PROGMEM actionmaps[][MATRIX_ROWS][MATRIX_COLS] = {
         /* right hand */
             F6   , F7   , F8     , F9      , F10    ,
             6    , 7    , 8      , 9       , 0      ,
-            TRNS  , TRNS  , TRNS   , MINS    , EQL    ,
+            TRNS , TRNS , TRNS   , MINS    , EQL    ,
             TRNS , TRNS , TRNS   , TRNS
     ),
     

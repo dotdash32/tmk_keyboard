@@ -15,16 +15,12 @@ enum function_id {
     PROMICRO_PROGRAM,
 };
 
-#define AC_FN1            ACTION_LAYER_ONESHOT(3)
-#define AC_FN2            ACTION_LAYER_ONESHOT(4)
-#define AC_FN3            ACTION_LAYER_ONESHOT(5)
+#define AC_FN0            ACTION_LAYER_ONESHOT(1)
+#define AC_FN2            ACTION_LAYER_TAP_KEY(3, KC_ENT)
+#define AC_FN4            ACTION_LAYER_TOGGLE(5)
 #define AC_SSFT           ACTION_MODS_ONESHOT(MOD_LSFT)
 #define AC_SFT_ENT        ACTION_MODS_TAP_KEY(MOD_LSFT, KC_ENT)
 
-#define AC_FN0            ACTION_FUNCTION(RESET_LAYER_STATE)
-#define AC_QWERTY         ACTION_DEFAULT_LAYER_SET(0)
-#define AC_DVORAK         ACTION_DEFAULT_LAYER_SET(1)
-#define AC_COLEMAK        ACTION_DEFAULT_LAYER_SET(2)
 
 #define AC_PROMICRO_PROGRAM  ACTION_FUNCTION_TAP(PROMICRO_PROGRAM)
 #define AC_PROMICRO_RESET    ACTION_FUNCTION_TAP(PROMICRO_RESET)
@@ -41,22 +37,22 @@ const uint16_t PROGMEM actionmaps[][MATRIX_ROWS][MATRIX_COLS] = {
             Y    , U    , I    , O    , P    ,
             H    , J    , K    , L    , SCLN ,
             N    , M    , COMM , DOT  , SLSH ,
-            FN3  , FN2  , SPC  , FN0 
+            TAB  , FN2  , SPC  , FN0 
     ),
     /* FN for fn */
     [1] = ACTIONMAP(
         /* left hand */
-            TRNS , TRNS , TRNS , DEL  , INS    ,
-            TRNS , TRNS , TNRS , BSPC , TRNS   ,
-            TRNS , TRNS , TRNS , TRNS , TRNS   ,
+            ESC  , TRNS , TRNS , DEL  , INS    ,
+            CAPS  , TRNS , TNRS , BSPC , TRNS   ,
+            FN4 , TRNS , TRNS , TRNS , TRNS   ,
             TRNS , TRNS , TRNS , TRNS ,
         /* right hand */
             HOME , PGUP   , UP     , PGDN    , BSPC   ,
-            END  , LEFT   , DOWN   , RGHT    , ENT    ,
-            NO   , VOLU , VOLD   , MUTE    , NUM   ,
+            END  , LEFT   , DOWN   , RGHT    , QUOT    ,
+            LBRC , RBRC   , TRNS   , ESC     , APP    ,
             TRNS , TRNS   , TRNS   , TRNS    
     ),
-    /* Raise for Symbols */
+    /* Raise for Symbols SUSPENED FOR NOW */
     [2] = ACTIONMAP(
         /* left hand */
             INS  , DEL  , HOME , UP   , END  , PGUP ,
@@ -77,11 +73,23 @@ const uint16_t PROGMEM actionmaps[][MATRIX_ROWS][MATRIX_COLS] = {
             F11  , F12  , PSCR , SLCK , PAUS    ,
             TRNS , TRNS , TRNS , TRNS ,
         /* right hand */
-            F6   , F7   , F8     , F9      , F10    ,
-            6    , 7    , 8      , 9       , 0      ,
-            TRNS , TRNS , TRNS   , MINS    , EQL    ,
-            TRNS , TRNS , TRNS   , TRNS
+            F6   , F7   , F8    , F9  , F10     ,
+            6    , 7    , 8     , 9   , 0       ,
+            TRNS , MINS , EQL   , DOT , SLSH    ,
+            TRNS , TRNS , TRNS  , TRNS
     ),
+    /*Numpad Layer */
+    [4] = ACTIONMAP(
+        /*Left hand */
+            ESC  , P7   , P8    , P9   , P0    ,
+            NUML , P4   , P5    , P6   , PDOT  , 
+            TRNS , P1   , P2    , P3   , PENT  , 
+            TRNS , TRNS , TRNS  , TRNS ,
+            /*right hand*/
+            , , , , ,
+            , , , , ,
+            , , , , ,
+            , , , ,)
     
 };
 

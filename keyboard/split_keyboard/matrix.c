@@ -247,26 +247,28 @@ uint8_t matrix_key_count(void)
  * col: 0
  * pin: B2
 
- * col: 0   1   2   3   4   5
- * pin: F6  F7  B1  B3  B2  B6
+ * col: 0   1   2   3   4 
+ * pin: 4   5   6   7   8\
+ 
+ Pin 3 is probably for serial
  */
 static void  init_cols(void)
 {
     // Input with pull-up(DDR:0, PORT:1)
-    DDRB  &= ~(1<<1 | 1<<3 | 1<<2 | 1<<6);
-    PORTB |=  (1<<1 | 1<<3 | 1<<2 | 1<<6);
-    DDRF  &= ~(1<<6 | 1<<7);
-    PORTF |=  (1<<6 | 1<<7);
+    palSetPadMode(TEENSY_PIN4_IOPORT, TEENSY_PIN4, PAL_MODE_INPUT_PULLUP);
+    palSetPadMode(TEENSY_PIN5_IOPORT, TEENSY_PIN5, PAL_MODE_INPUT_PULLUP);
+    palSetPadMode(TEENSY_PIN6_IOPORT, TEENSY_PIN6, PAL_MODE_INPUT_PULLUP);
+    palSetPadMode(TEENSY_PIN7_IOPORT, TEENSY_PIN7, PAL_MODE_INPUT_PULLUP);
+    palSetPadMode(TEENSY_PIN8_IOPORT, TEENSY_PIN8, PAL_MODE_INPUT_PULLUP);
 }
 
 static matrix_row_t read_cols(void)
 {
-    return (PINF&(1<<6) ? 0 : (1<<0)) |
-           (PINF&(1<<7) ? 0 : (1<<1)) |
-           (PINB&(1<<1) ? 0 : (1<<2)) |
-           (PINB&(1<<3) ? 0 : (1<<3)) |
-           (PINB&(1<<2) ? 0 : (1<<4)) |
-           (PINB&(1<<6) ? 0 : (1<<5));
+    return ((palReadPad(TEENSY_PIN4_IOPORT, TEENSY_PIN4)==PAL_HIGH) ? 0 : (1<<0)) |
+           ((palReadPad(TEENSY_PIN5_IOPORT, TEENSY_PIN5)==PAL_HIGH) ? 0 : (1<<0)) |
+           ((palReadPad(TEENSY_PIN6_IOPORT, TEENSY_PIN6)==PAL_HIGH) ? 0 : (1<<0)) |
+           ((palReadPad(TEENSY_PIN7_IOPORT, TEENSY_PIN7)==PAL_HIGH) ? 0 : (1<<0)) |
+           ((palReadPad(TEENSY_PIN8_IOPORT, TEENSY_PIN8)==PAL_HIGH) ? 0 : (1<<0));
 }
 
 /* Row pin configuration
@@ -274,19 +276,18 @@ static matrix_row_t read_cols(void)
  * pin: B1
  *
  * row: 0  1  2  4
- * pin: D7 E6 B4 B6
+ * pin: 17 16 15 14
+ 
+ Pins 19 and 18 for I2C,
+ SCL and SDA, respectively
  */
 static void unselect_rows(void)
 {
     // Hi-Z(DDR:0, PORT:0) to unselect
-    DDRB  &= ~0b00110000;
-    PORTB &= ~0b00110000;
-
-    DDRD  &= ~0b10000000;
-    PORTD &= ~0b10000000;
-
-    DDRE  &= ~0b01000000;
-    PORTE &= ~0b01000000;
+    palSetPadMode(TEENSY_PIN17_IOPORT, TEENSY_PIN17, PAL_MODE_INPUT); // hi-Z
+    palSetPadMode(TEENSY_PIN16_IOPORT, TEENSY_PIN16, PAL_MODE_INPUT); // hi-Z
+    palSetPadMode(TEENSY_PIN15_IOPORT, TEENSY_PIN15, PAL_MODE_INPUT); // hi-Z
+    palSetPadMode(TEENSY_PIN14_IOPORT, TEENSY_PIN14, PAL_MODE_INPUT); // hi-Z
 }
 
 static void select_row(uint8_t row)
@@ -294,20 +295,20 @@ static void select_row(uint8_t row)
     // Output low(DDR:1, PORT:0) to select
     switch (row) {
         case 0:
-            DDRD  |= (1<<7);
-            PORTD &= ~(1<<7);
+            palSetPadMode(TEENSY_PIN17_IOPORT, TEENSY_PIN17, PAL_MODE_OUTPUT_PUSHPULL);
+            palClearPad(TEENSY_PIN17_IOPORT, TEENSY_PIN17);
             break;
         case 1:
-            DDRE  |= (1<<6);
-            PORTE &= ~(1<<6);
+            palSetPadMode(TEENSY_PIN16_IOPORT, TEENSY_PIN16, PAL_MODE_OUTPUT_PUSHPULL);
+            palClearPad(TEENSY_PIN16_IOPORT, TEENSY_PIN16);
             break;
         case 2:
-            DDRB  |= (1<<4);
-            PORTB &= ~(1<<4);
+            palSetPadMode(TEENSY_PIN15_IOPORT, TEENSY_PIN15, PAL_MODE_OUTPUT_PUSHPULL);
+            palClearPad(TEENSY_PIN15_IOPORT, TEENSY_PIN15);
             break;
         case 3:
-            DDRB  |= (1<<5);
-            PORTB &= ~(1<<5);
+            palSetPadMode(TEENSY_PIN14_IOPORT, TEENSY_PIN14, PAL_MODE_OUTPUT_PUSHPULL);
+            palClearPad(TEENSY_PIN14_IOPORT, TEENSY_PIN14);
             break;
     }
 }

@@ -43,8 +43,8 @@ const uint16_t PROGMEM actionmaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [1] = ACTIONMAP(
         /* left hand */
             ESC  , TRNS , TRNS , DEL  , INS    ,
-            CAPS  , TRNS , TNRS , BSPC , TRNS   ,
-            FN4 , TRNS , TRNS , TRNS , TRNS   ,
+            CAPS , TRNS , TNRS , BSPC , TRNS   ,
+            FN4  , TRNS , TRNS , TRNS , TRNS   ,
             TRNS , TRNS , TRNS , TRNS ,
         /* right hand */
             HOME , PGUP   , UP     , PGDN    , BSPC   ,
@@ -64,7 +64,7 @@ const uint16_t PROGMEM actionmaps[][MATRIX_ROWS][MATRIX_COLS] = {
             c(PGDN) , c(LEFT) , c(DOWN) , c(RGHT) , c(BSPC) , F11 ,
             F6      , F7      , F8      , F9      , F10     , FN0 ,
             TRNS    , TRNS    , TRNS    , TRNS    , TRNS
-        ),
+    ),
     /* Lower for Numbers */
    [3] = ACTIONMAP(
        /* left hand */
@@ -84,12 +84,13 @@ const uint16_t PROGMEM actionmaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ESC  , P7   , P8    , P9   , P0    ,
             NUML , P4   , P5    , P6   , PDOT  , 
             TRNS , P1   , P2    , P3   , PENT  , 
-            TRNS , TRNS , TRNS  , TRNS ,
-            /*right hand*/
-            , , , , ,
-            , , , , ,
-            , , , , ,
-            , , , ,)
+            TRNS , TRNS , TRNS  , FN5  ,
+        /*right hand*/
+            TRNS , TRNS , TRNS  , TRNS , TRNS ,
+            TRNS , TRNS , TRNS  , TRNS , TRNS ,
+            TRNS , TNRS , TRNS  , TRNS , TRNS ,
+            TRNS , TRNS , TRNS  , TRNS 
+    ),
     
 };
 

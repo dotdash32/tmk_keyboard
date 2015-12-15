@@ -135,6 +135,7 @@ COMMAND_ENABLE = yes    # Commands for debug and configuration
 SLEEP_LED_ENABLE = yes  # Breathing sleep LED during USB suspend
 #NKRO_ENABLE = yes	# USB Nkey Rollover
 ACTIONMAP_ENABLE = yes	# Use 16bit action codes in keymap instead of 8bit keycodes
+BLUETOOTH_ENABLE = yes  # For Bluetooth in an ideal world
 
 
 ifdef ACTIONMAP_ENABLE

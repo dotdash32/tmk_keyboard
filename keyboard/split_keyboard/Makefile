@@ -109,6 +109,11 @@ ARMV = 6
 # Interrupt driven control endpoint task(+60)
 OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 
+#
+# LUFA specific
+#
+# Target architecture (see library "Board Types" documentation).
+ARCH = AVR8
 
 # Boot Section Size in *bytes*
 #   Teensy halfKay   512

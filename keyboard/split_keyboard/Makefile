@@ -39,7 +39,7 @@
 #----------------------------------------------------------------------------
 
 # Target file name (without extension).
-TARGET = split_keyboard
+PROJECT = split_keyboard
 
 # Directory common source filess exist
 TMK_DIR = ../../tmk_core
@@ -105,34 +105,13 @@ MCU  = cortex-m0
 # I.e. 6 for Teensy LC; 7 for Teensy 3.x
 ARMV = 6
 
-
-# Interrupt driven control endpoint task(+60)
-OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
-
-#
-# LUFA specific
-#
-# Target architecture (see library "Board Types" documentation).
-ARCH = AVR8
-
-# Boot Section Size in *bytes*
-#   Teensy halfKay   512
-#   Teensy++ halfKay 1024
-#   Atmel DFU loader 4096
-#   LUFA bootloader  4096
-#   USBaspLoader     2048
-OPT_DEFS += -DBOOTLOADER_SIZE=4096
-
-# Changes some bootmagic settings for when the space is on the left half
-OPT_DEFS += -DSPACE_ON_LEFT_HALF
-
 # # Use I2C for communication between the halves of the keyboard
 OPT_DEFS += -DUSE_I2C
 
 # Build Options
 #   comment out to disable the options.
 #
-BOOTMAGIC_ENABLE = yes	# Virtual DIP switch configuration(+1000)
+# BOOTMAGIC_ENABLE = yes	# Virtual DIP switch configuration(+1000)
 MOUSEKEY_ENABLE = yes	# Mouse keys(+4700)
 EXTRAKEY_ENABLE = yes	# Audio control and System control(+450)
 CONSOLE_ENABLE = yes	# Console for debug(+400)
@@ -169,17 +148,12 @@ VPATH += $(TMK_DIR)
 # Un comment this line if you want to use pjrc protocol
 # include $(TMK_DIR)/protocol/pjrc.mk
 
-include $(TMK_DIR)/protocol/lufa.mk
+# include $(TMK_DIR)/protocol/lufa.mk
 include $(TMK_DIR)/common.mk
 include $(TMK_DIR)/rules.mk
+include $(TMK_DIR)/tool/chibios/common.mk
+include $(TMK_DIR)/tool/chibios/chibios.mk
 
-
-debug-on: EXTRAFLAGS += -DDEBUG -DDEBUG_ACTION
-debug-on: all
-
-debug-off: EXTRAFLAGS += -DNO_DEBUG -DNO_PRINT
-debug-off: OPT_DEFS := $(filter-out -DCONSOLE_ENABLE,$(OPT_DEFS))
-debug-off: all
 
 eeprom-left:
 	sleep 3; avrdude -p atmega32u4 -P $(COM_PORT) -c avr109 -U eeprom:w:eeprom-lefthand.eep

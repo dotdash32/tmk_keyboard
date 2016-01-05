@@ -23,13 +23,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VENDOR_ID       0xFEED
 #define PRODUCT_ID      0x4444
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    tmk-split
-#define PRODUCT         tmk-split-keyboard
-#define DESCRIPTION     tmk split keyboard firmware
+#define MANUFACTURER    DotdashDS
+#define PRODUCT         38 Calibur
+#define DESCRIPTION     tmk Calibur firmware
 
 /* key matrix size */
 #define MATRIX_ROWS 8
-#define MATRIX_COLS 6
+#define MATRIX_COLS 5
 
 /* define if matrix has ghost */
 //#define MATRIX_HAS_GHOST
@@ -99,3 +99,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ONESHOT_TAP_TOGGLE 2
 
 #endif
+
+        
